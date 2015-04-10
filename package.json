@@ -1,0 +1,38 @@
+{
+  "name": "SU-registor",
+  "version": "0.0.1",
+  "description": "Register members of the student union",
+  "repository": "https://github.com/euhiemf/",
+  "main": "js/app.cjsx",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "keymirror": "~0.1.0",
+    "object-assign": "^1.0.0",
+    "github-api": "^0.10.4",
+    "react": "^0.12.0"
+  },
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "coffee-reactify": "^3.0.0",
+    "envify": "^3.0.0",
+    "jest-cli": "~0.1.17",
+    "reactify": "^0.15.2",
+    "uglify-js": "~2.4.15",
+    "watchify": "^2.1.1"
+  },
+  "scripts": {
+    "start": "watchify -o js/bundle.js -v -d js/app.cjsx",
+    "build": "browserify . -t [envify --NODE_ENV production, coffee-reactify --extension=\".cjsx\"] | uglifyjs -cm > js/bundle.min.js",
+    "test": "jest"
+  },
+  "author": "Richard Samuelsson",
+  "browserify": {
+    "transform": [
+      "coffee-reactify",
+      "envify"
+    ]
+  },
+  "jest": {
+    "rootDir": "./js"
+  }
+}
